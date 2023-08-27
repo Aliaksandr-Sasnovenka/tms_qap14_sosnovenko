@@ -9,7 +9,7 @@ word_list_1 = fileout_1.read().split()
 if len(word_list_1) < 3:
     raise Exception("Alas, you sent less then 3 numbers")
 print(word_list_1[0], word_list_1[1], word_list_1[-1])
-
+fileout_1.close()
 # 2 evens and even odds
 
 fileout_2 = open("hw6/intergers", "r")
@@ -22,6 +22,7 @@ for i in word_list_2:
         open("hw6/even_integers.txt", "a").write(" " + i)
     else:
         open("hw6/odd_integers.txt", "a").write(" " + i)
+fileout_2.close()
 
 # 3. squares of floats
 
@@ -35,7 +36,6 @@ with open("hw6/reality.txt", "r+") as fileout_3:
     fileout_3.seek(0)
     fileout_3.write(string_store)
     fileout_3.truncate()
-fileout_3.close()
 
 # 4. replaceable binary files
 
@@ -48,6 +48,8 @@ file2 = open("hw6/bin2.bin", 'wb')
 import pickle
 pickle.dump(bin1, file1)
 pickle.dump(bin2, file2)
+file1.close()
+file2.close()
 
 """read two above files"""
 file1 = open("hw6/bin1.bin", 'rb+')
@@ -58,3 +60,5 @@ d1 = pickle.load(file1)
 d2 = pickle.load(file2)
 pickle.dump(d1, file2)
 pickle.dump(d2, file1)
+file2.close()
+file1.close()
